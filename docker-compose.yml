@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      target: runtime-stage
+    container_name: wdf332/bingfetch
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      
+    volumes:
+      - .:/usr/src/app
+    command: ["npx", "forever", "dist/app.js"]
